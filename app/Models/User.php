@@ -43,18 +43,24 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the blogs for the user.
+     * Get the blog data for the user.
      */
     public function blogs()
     {
         return $this->hasMany(Blog::class);
     }
 
+    /**
+     * Get the comment data for the user.
+     */
     public function comments()
     {
         return $this->hasMany(Comment::class);
     }
 
+    /**
+     * Get the reply data for the user.
+     */
     public function replies()
     {
         return $this->hasMany(Reply::class);
