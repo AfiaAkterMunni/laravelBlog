@@ -2,19 +2,19 @@
 <html class="no-js" lang="en">
 <head>
 
-    @include('../includes.head')
+    @include('includes.head')
 
 </head>
 
 <body id="top">
 
-    @include('includes.header')
+    @include('includes.navbar')
 
 
     @yield('content')
 
 
-    @include('../includes.footer')
+    @include('includes.footer')
 
 
 </body>
