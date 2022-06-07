@@ -19,14 +19,11 @@
                     <li class="has-children">
                         <a href="#0" title="">Categories</a>
                         <ul class="sub-menu">
-                            <li><a href="{{ route('category') }}">Design</a></li>
-                            <li><a href="{{ route('category') }}">Lifestyle</a></li>
-                            <li><a href="{{ route('category') }}">Photography</a></li>
-                            <li><a href="{{ route('category') }}">Vacation</a></li>
-                            <li><a href="{{ route('category') }}">Work</a></li>
-                            <li><a href="{{ route('category') }}">Health</a></li>
-                            <li><a href="{{ route('category') }}">Family</a></li>
-                            <li><a href="{{ route('category') }}">Relationship</a></li>
+                            {{-- after fetching display data in blade --}}
+                            @foreach ($categories as $category)
+                                <li><a href="{{ route('category') }}">{{ $category->name }}</a></li>
+                            @endforeach
+
                         </ul>
                     </li>
                     <li><a href="{{ route('about') }}" title="">About</a></li>
