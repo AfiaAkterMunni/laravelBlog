@@ -22,12 +22,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'show'])->name('home');
 
-Route::get('/blog', [BlogController::class, 'show'])->name('blog');
+Route::get('/blog/{id}', [BlogController::class, 'show'])->name('blog');
 
 Route::get('/about', [AboutController::class, 'show'])->name('about');
 
 Route::get('/contact', [ContactController::class, 'show'])->name('contact');
 
-Route::get('/category', [CategoryController::class, 'show'])->name('category');
+Route::get('/category/{id}', [CategoryController::class, 'show'])->name('category');
 
 

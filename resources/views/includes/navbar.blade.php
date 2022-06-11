@@ -1,6 +1,8 @@
 <!-- header
     ================================================== -->
-    <header class="s-header">
+    <header class="s-header @if (\Request::route()->getName() != 'home' )
+    s-header--opaque
+    @endif">
 
         <div class="s-header__logo">
             <a class="logo" href="{{ route('home') }}">
@@ -21,7 +23,7 @@
                         <ul class="sub-menu">
                             {{-- after fetching display data in blade --}}
                             @foreach ($categories as $category)
-                                <li><a href="{{ route('category') }}">{{ $category->name }}</a></li>
+                                <li><a href="{{ route('category', [ 'id' => $category->id ]) }}">{{ $category->name }}</a></li>
                             @endforeach
 
                         </ul>
