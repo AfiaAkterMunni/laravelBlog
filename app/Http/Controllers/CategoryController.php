@@ -17,8 +17,6 @@ class CategoryController extends Controller
 
         $blogs = $category->blogs;
 
-        // dd($blogs);
-
         return view('pages.category', [
             'categories' => $categories,
             'category' => $category->name,
