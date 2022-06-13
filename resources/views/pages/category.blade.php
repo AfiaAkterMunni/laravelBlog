@@ -51,10 +51,13 @@
                                     <h1 class="entry__title"><a href="{{route('blog', ['id' => $blog->id])}}">{{ $blog->title }}</a></h1>
 
                                     <div class="entry__meta">
-                                        <span class="byline"">By:
+                                        <span class="byline">By:
                                             <span class='author'>
                                                 <a href="https://www.dreamhost.com/r.cgi?287326">{{ $blog->user->username }}</a>
                                             </span>
+                                        </span>
+                                        <span class='cat-links' style="float: right; color:blueviolet">
+                                            {{$blog->created_at->diffForHumans()}}
                                         </span>
                                     </div>
                                 </div>

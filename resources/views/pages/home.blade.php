@@ -8,101 +8,40 @@
 
         <div class="s-hero__slider">
 
-            <div class="s-hero__slide">
-
-                <div class="s-hero__slide-bg" style="background-image: url('images/slide1-bg-3000.jpg');"></div>
-
-                <div class="row s-hero__slide-content animate-this">
-                    <div class="column">
-                        <div class="s-hero__slide-meta">
-                            <span class="cat-links">
-                                <a href="#0">Lifestyle</a>
-                                <a href="#0">Design</a>
-                            </span>
-                            <span class="byline">
-                                Posted by
-                                <span class="author">
-                                    <a href="#0">Jonathan Doe</a>
-                                </span>
-                            </span>
-                        </div>
-                        <h1 class="s-hero__slide-text">
-                            <a href="#0">
-                                Tips and Ideas to Help You Start Freelancing.
-                            </a>
-                        </h1>
-                    </div>
-                </div>
-
-            </div> <!-- end s-hero__slide -->
+        @foreach ($sliders as $slider)
 
             <div class="s-hero__slide">
 
-                <div class="s-hero__slide-bg" style="background-image: url('images/slide2-bg-3000.jpg');"></div>
+                <div class="s-hero__slide-bg" style="background-image: url({{asset('uploads/blogs/'.$slider->image)}})"></div>
 
                 <div class="row s-hero__slide-content animate-this">
                     <div class="column">
                         <div class="s-hero__slide-meta">
+                            @foreach ($slider->categories as $category)
                             <span class="cat-links">
-                                <a href="#0">Work</a>
+                                <a href="#0">{{$category->name}}</a>
                             </span>
+                            @endforeach
+
                             <span class="byline">
                                 Posted by
                                 <span class="author">
-                                    <a href="#0">Juan Dela Cruz</a>
+                                    <a href="#0">{{$slider->user->username}}</a>
                                 </span>
                             </span>
                         </div>
                         <h1 class="s-hero__slide-text">
                             <a href="#0">
-                                Minimalism: The Art of Keeping It Simple.
+                                {{$slider->title}}
                             </a>
                         </h1>
                     </div>
                 </div>
 
             </div> <!-- end s-hero__slide -->
-
-            <div class="s-hero__slide"">
-
-                <div class="s-hero__slide-bg" style="background-image: url('images/slide3-bg-3000.jpg');"></div>
-
-                <div class="row s-hero__slide-content animate-this">
-                    <div class="column">
-                        <div class="s-hero__slide-meta">
-                            <span class="cat-links">
-                                <a href="#0">Health</a>
-                                <a href="#0">Lifestyle</a>
-                            </span>
-                            <span class="byline">
-                                Posted by
-                                <span class="author">
-                                    <a href="#0">Jane Doe</a>
-                                </span>
-                            </span>
-                        </div>
-                        <h1 class="s-hero__slide-text">
-                            <a href="#0">
-                                10 Reasons Why Being in Nature Is Good For You.
-                            </a>
-                        </h1>
-                    </div>
-                </div>
-
-            </div> <!-- end s-hero__slide -->
+        @endforeach
 
         </div> <!-- end s-hero__slider -->
-
-        <div class="s-hero__social hide-on-mobile-small">
-            <p>Follow</p>
-            <span></span>
-            <ul class="s-hero__social-icons">
-                <li><a href="#0"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-                <li><a href="#0"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
-                <li><a href="#0"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
-                <li><a href="#0"><i class="fab fa-dribbble" aria-hidden="true"></i></a></li>
-            </ul>
-        </div> <!-- end s-hero__social -->
 
         <div class="nav-arrows s-hero__nav-arrows">
             <button class="s-hero__arrow-prev">
@@ -151,18 +90,21 @@
                                 <h1 class="entry__title"><a href="{{ route('blog',['id'=>$blog->id])}}">{{$blog->title}}</a></h1>
 
                                 <div class="entry__meta">
-                                    <span class="byline"">By:
+                                    <span class="byline">By:
                                         <span class='author'>
                                             <a href="#">{{$blog->user->username}}</a>
+                                        </span>
                                     </span>
-                                </span>
                                     <span class="cat-links">
                                         <a href="#">{{$blog->user->designation}}</a>
+                                    </span>
+                                    <span class="cat-links" style="float: right; color:blueviolet">
+                                        {{$blog->created_at->diffForHumans()}}
                                     </span>
                                 </div>
                             </div>
                             <div class="entry__excerpt">
-                                <p>{{$blog->description}}</p>
+                                <p>{{Str::limit($blog->description, 100)}}</p>
                             </div>
                             <a class="entry__more-link" href="{{ route('blog',['id'=>$blog->id])}}">Learn More</a>
                         </div> <!-- end entry__text -->
