@@ -107,41 +107,16 @@
                                 <p>{{Str::limit($blog->description, 100)}}</p>
                             </div>
                             <a class="entry__more-link" href="{{ route('blog',['id'=>$blog->id])}}">Learn More</a>
-                        </div> <!-- end entry__text -->
+                        </div>
 
-                    </article> <!-- end article -->
+                    </article>
 
                     @endforeach
 
-                </div> <!-- end brick-wrapper -->
+                </div>
+            </div>
 
-            </div> <!-- end masonry -->
-
-            {{-- <div class="row">
-                <div class="column large-12">
-                    <nav class="pgn">
-                        <ul>
-                            <li>
-                                <span class="pgn__prev" href="#0">
-                                    Prev
-                                </span>
-                            </li>
-                            <li><a class="pgn__num" href="#0">1</a></li>
-                            <li><span class="pgn__num current">2</span></li>
-                            <li><a class="pgn__num" href="#0">3</a></li>
-                            <li><a class="pgn__num" href="#0">4</a></li>
-                            <li><a class="pgn__num" href="#0">5</a></li>
-                            <li><span class="pgn__num dots">…</span></li>
-                            <li><a class="pgn__num" href="#0">8</a></li>
-                            <li>
-                                <span class="pgn__next" href="#0">
-                                    Next
-                                </span>
-                            </li>
-                        </ul>
-                    </nav> <!-- end pgn -->
-                </div> <!-- end column -->
-            </div>  --}}
+            {{ $blogs->links('includes.paginator') }}
 
         </div> <!-- end s-bricks -->
 
