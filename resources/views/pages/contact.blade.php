@@ -63,29 +63,44 @@
                                     </p>
                                 </div>
                             </div> <!-- end s-content__blocks -->
-
-                            <form name="cForm" id="cForm" class="s-content__form" method="post" action="">
+                            @if (session('success'))
+                                <div class="alert-box--success" id="successBox">
+                                    {{session('success')}}
+                                </div>
+                            @endif
+                            <form name="cForm" id="cForm" class="s-content__form" method="post" action="{{route('contact.store')}}">
+                                @csrf
                                 <fieldset>
-
                                     <div class="form-field">
-                                        <input name="cName" type="text" id="cName" class="h-full-width h-remove-bottom" placeholder="Your Name" value="">
+                                        <input name="name" type="text" id="name" class="h-full-width h-remove-bottom" placeholder="Your Name" value="{{old('name')}}">
+                                            @error('name')
+                                                <p class="alert-box--error">{{ $message }}</p>
+                                            @enderror
                                     </div>
 
                                     <div class="form-field">
-                                        <input name="cEmail" type="text" id="cEmail" class="h-full-width h-remove-bottom" placeholder="Your Email" value="">
+                                        <input name="email" type="text" id="email" class="h-full-width h-remove-bottom" placeholder="Your Email" value="{{old('email')}}">
+                                            @error('email')
+                                            <p class="alert-box--error">{{ $message }}</p>
+                                            @enderror
                                     </div>
 
                                     <div class="form-field">
-                                        <input name="cWebsite" type="text" id="cWebsite" class="h-full-width h-remove-bottom" placeholder="Website"  value="">
+                                        <input name="subject" type="text" id="subject" class="h-full-width h-remove-bottom" placeholder="Subject"  value="{{old('subject')}}">
+                                            @error('subject')
+                                                <p class="alert-box--error">{{ $message }}</p>
+                                            @enderror
                                     </div>
 
                                     <div class="message form-field">
-                                        <textarea name="cMessage" id="cMessage" class="h-full-width" placeholder="Your Message" ></textarea>
+                                        <textarea name="message" id="message" class="h-full-width" placeholder="Your Message" >{{old('message')}}</textarea>
+                                            @error('message')
+                                            <p class="alert-box--error">{{ $message }}</p>
+                                            @enderror
                                     </div>
 
                                     <br>
                                     <button type="submit" class="submit btn btn--primary h-full-width">Submit</button>
-
                                 </fieldset>
                             </form> <!-- end form -->
 

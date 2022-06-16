@@ -30,4 +30,8 @@ Route::get('/contact', [ContactController::class, 'show'])->name('contact');
 
 Route::get('/category/{id}', [CategoryController::class, 'show'])->name('category');
 
+//store data
+Route::post('/contact/store', [ContactController::class, 'store'])->name('contact.store');
+
+
 
