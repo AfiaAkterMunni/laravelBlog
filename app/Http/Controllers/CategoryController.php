@@ -15,7 +15,7 @@ class CategoryController extends Controller
 
         $category = Category::find($id);
 
-        $blogs = $category->blogs;
+        $blogs = $category->blogs()->paginate(6);
 
         return view('pages.category', [
             'categories' => $categories,

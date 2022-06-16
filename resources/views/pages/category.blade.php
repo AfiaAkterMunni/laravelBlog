@@ -1,4 +1,5 @@
 @extends('layouts.master')
+@section('title', $category)
 @section('content')
 
     <!-- content
@@ -70,11 +71,11 @@
                         </article> <!-- end article -->
                         @endforeach
 
-
-
                     </div> <!-- end brick-wrapper -->
 
                 </div> <!-- end masonry -->
+            {{ $blogs->links('includes.paginator') }}
+
 
                 {{-- <div class="row">
                     <div class="column large-12">
