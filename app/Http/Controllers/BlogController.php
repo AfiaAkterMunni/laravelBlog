@@ -13,11 +13,15 @@ class BlogController extends Controller
         $categories = Category::all();
 
         $blog = Blog::find($id);
+        // $blog->update([
+        //     'view_count'=> $blog->view_count + 1
+        // ]);
+        $blog->view_count++;
 
+        $blog->update();
         return view('pages.blog', [
             'categories' => $categories,
             'blog' => $blog
-
         ]);
     }
 }

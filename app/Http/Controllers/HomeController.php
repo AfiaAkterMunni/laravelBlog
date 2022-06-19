@@ -13,7 +13,7 @@ class HomeController extends Controller
         // $blogs = Blog::orderBy('id', 'DESC')->get();
         $blogs = Blog::latest()->paginate(6);
         $categories = Category::all();
-        $sliders = Blog::latest()->limit(3)->get();
+        $sliders = Blog::latest('view_count')->limit(3)->get();
         return view('pages.home', [
             'categories' => $categories,
             'blogs' => $blogs,

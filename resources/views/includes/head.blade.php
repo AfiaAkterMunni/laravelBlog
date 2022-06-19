@@ -16,8 +16,8 @@
 
     <!-- script
     ================================================== -->
-    <script src="js/modernizr.js"></script>
-    <script defer src="js/fontawesome/all.min.js"></script>
+    <script src="{{asset('js/modernizr.js')}}"></script>
+    <script defer src="{{asset('js/fontawesome/all.min.js')}}"></script>
 
     <!-- favicons
     ================================================== -->

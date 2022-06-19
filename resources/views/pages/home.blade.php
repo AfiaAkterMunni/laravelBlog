@@ -107,7 +107,10 @@
                             <div class="entry__excerpt">
                                 <p>{{Str::limit($blog->description, 100)}}</p>
                             </div>
-                            <a class="entry__more-link" href="{{ route('blog',['id'=>$blog->id])}}">Learn More</a>
+                            <span>
+                                <a class="entry__more-link" href="{{ route('blog',['id'=>$blog->id])}}">Learn More</a>
+                                <code style="float: right"><i class="fa fa-eye"></i> {{$blog->view_count}}</code>
+                            </span>
                         </div>
 
                     </article>

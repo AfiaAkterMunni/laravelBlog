@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 class StoreContactRequest extends FormRequest
 {
     /**
-     * The route that users should be redirected to if validation fails.
+     * The url that users should be redirected to if validation fails.
      *
      * @var string
      */
