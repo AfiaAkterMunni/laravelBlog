@@ -5,7 +5,7 @@
     @endif">
 
         <div class="s-header__logo">
-            <a class="logo" href="{{ route('home') }}">
+            <a class="logo" href="{{ route('homePage') }}">
                 <img src="{{asset('images/logo.svg')}}" alt="Homepage">
             </a>
         </div>
@@ -17,7 +17,7 @@
                 <h3 class="s-header__nav-heading h6">Navigate to</h3>
 
                 <ul class="s-header__nav">
-                    <li class="current"><a href="{{ route('home') }}" title="">Home</a></li>
+                    <li class="current"><a href="{{ route('homePage') }}" title="">Home</a></li>
                     <li class="has-children">
                         <a href="#0" title="">Categories</a>
                         <ul class="sub-menu">
