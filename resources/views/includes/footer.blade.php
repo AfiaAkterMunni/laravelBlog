@@ -55,14 +55,22 @@
                     <p>Signup to get updates on articles, interviews and events.</p>
 
                     <div class="subscribe-form">
-
-                        <form id="mc-form" class="group" novalidate="true">
-
-                            <input type="email" value="" name="dEmail" class="email" id="mc-email" placeholder="Your Email Address" required="">
+                        @if (session('subscribe'))
+                                <div class="alert-box--success" id="successBox">
+                                    {{session('subscribe')}}
+                                </div>
+                        @endif
+                        <form id="mc-form" class="group" novalidate="true" method="POST" action="{{route('subscribe.store')}}">
+                            @csrf
+                            <input type="email" value="" name="email" class="email" id="mc-email" placeholder="Your Email Address" required="">
+                            @error('email')
+                            <div class="alert-box alert-box--error">
+                                <p>{{$message}}</p>
+                                <span class="alert-box__close"></span>
+                            </div>
+                            @enderror
 
                             <input type="submit" name="subscribe" value="subscribe" >
-
-                            <label for="mc-email" class="subscribe-message"></label>
 
                         </form>
 
