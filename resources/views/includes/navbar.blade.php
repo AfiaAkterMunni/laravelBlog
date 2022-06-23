@@ -1,6 +1,6 @@
 <!-- header
     ================================================== -->
-    <header class="s-header @if (\Request::route()->getName() != 'home' )
+    <header class="s-header @if (\Request::route()->getName() != 'homePage' )
     s-header--opaque
     @endif">
 
