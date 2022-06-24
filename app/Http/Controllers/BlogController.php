@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 class BlogController extends Controller
 {
     public function show($id){
-        $categories = Category::all();
 
         $blog = Blog::find($id);
         // $blog->update([
@@ -20,7 +19,6 @@ class BlogController extends Controller
 
         $blog->update();
         return view('pages.blog', [
-            'categories' => $categories,
             'blog' => $blog
         ]);
     }

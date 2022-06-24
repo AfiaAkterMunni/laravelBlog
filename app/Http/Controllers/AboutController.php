@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 class AboutController extends Controller
 {
     public function show(){
-        $categories = Category::all();
-        return view('pages.about', ['categories' => $categories]);
+        return view('pages.about');
     }
 }

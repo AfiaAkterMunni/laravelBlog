@@ -22,7 +22,7 @@
                         <a href="#0" title="">Categories</a>
                         <ul class="sub-menu">
                             {{-- after fetching display data in blade --}}
-                            @foreach ($categories as $category)
+                            @foreach (getCategories() as $category)
                                 <li><a href="{{ route('category', [ 'id' => $category->id ]) }}">{{ $category->name }}</a></li>
                             @endforeach
 

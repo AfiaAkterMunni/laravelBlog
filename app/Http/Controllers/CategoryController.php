@@ -11,14 +11,11 @@ class CategoryController extends Controller
     //display/show blade
     public function show($id){
 
-        $categories = Category::all();
-
         $category = Category::find($id);
 
         $blogs = $category->blogs()->paginate(6);
 
         return view('pages.category', [
-            'categories' => $categories,
             'category' => $category->name,
             'blogs' => $blogs
         ]);
