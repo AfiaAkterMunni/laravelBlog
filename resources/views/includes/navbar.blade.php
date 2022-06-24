@@ -30,6 +30,14 @@
                     </li>
                     <li><a href="{{ route('about') }}" title="">About</a></li>
                     <li><a href="{{ route('contact') }}" title="">Contact</a></li>
+                    @guest
+                        <li><a href="{{ route('register') }}" title="">Register</a></li>
+                        <li><a href="{{ route('login') }}" title="">Login</a></li>
+                    @else
+                        <li><a href="#" title="">Profile</a></li>
+                        <li><a href="#" title="">Logout</a></li>
+                    @endguest
+
                 </ul> <!-- end s-header__nav -->
 
                 <a href="#0" title="Close Menu" class="s-header__overlay-close close-mobile-menu">Close</a>
