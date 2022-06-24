@@ -5,6 +5,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\SubscribeController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,7 @@ Route::get('/category/{id}', [CategoryController::class, 'show'])->name('categor
 
 //store data
 Route::post('/contact/store', [ContactController::class, 'store'])->name('contact.store');
+Route::post('/comment/store', [CommentController::class, 'store'])->name('comment.store');
 Route::post('/subscribe', [SubscribeController::class, 'store'])->name('subscribe.store');
 
 

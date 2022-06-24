@@ -92,7 +92,7 @@
         <div class="comments-wrap">
 
             <div id="comments" class="row">
-                <div class="column large-12">
+                <div class="column large-12" id="allComments">
 
                     <h3>{{count($blog->comments)}} Comments</h3>
 
@@ -179,27 +179,19 @@
                     <span>Your email address will not be published.</span>
                     </h3>
 
-                    <form name="contactForm" id="contactForm" method="post" action="" autocomplete="off">
+                    <form name="contactForm" id="contactForm" method="post" action="{{route('comment.store')}}" autocomplete="off">
+                        @csrf
                         <fieldset>
-
-                            <div class="form-field">
-                                <input name="cName" id="cName" class="h-full-width h-remove-bottom" placeholder="Your Name" value="" type="text">
-                            </div>
-
-                            <div class="form-field">
-                                <input name="cEmail" id="cEmail" class="h-full-width h-remove-bottom" placeholder="Your Email" value="" type="text">
-                            </div>
-
-                            <div class="form-field">
-                                <input name="cWebsite" id="cWebsite" class="h-full-width h-remove-bottom" placeholder="Website" value="" type="text">
-                            </div>
-
                             <div class="message form-field">
-                                <textarea name="cMessage" id="cMessage" class="h-full-width" placeholder="Your Message"></textarea>
+                                @error('message')
+                                    <p class="alert-box--error">{{ $message }}</p>
+                                @enderror
+                                <textarea name="message" id="cMessage" class="h-full-width" placeholder="Write Your Comment Here..." style="min-height: 15rem"></textarea>
                             </div>
-
+                            {{-- pick the blog id --}}
+                            <input type="hidden" name="blog_id" value="{{$blog->id}}">
                             <br>
-                            <input name="submit" id="submit" class="btn btn--primary btn-wide btn--large h-full-width" value="Add Comment" type="submit">
+                            <input id="submit" class="btn btn--primary btn-wide btn--large h-full-width" value="Add Comment" type="submit">
 
                         </fieldset>
                     </form> <!-- end form -->

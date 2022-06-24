@@ -10,6 +10,13 @@ class Comment extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['comment', 'user_id', 'blog_id'];
+
+    /**
      * Get the reply data for the Comment.
      */
     public function replies()
@@ -32,4 +39,5 @@ class Comment extends Model
     {
         return $this->belongsTo(Blog::class);
     }
+
 }
