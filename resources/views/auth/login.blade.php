@@ -1,73 +1,109 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Login - Calvin</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/styles.css">
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+    <style type="text/css" media="screen">
+        .s-styles {
+            padding-bottom: var(--vspace-4);
+        }
+        .s-styles > .row {
+            max-width: var(--width-max);
+        }
+        .s-styles .intro h1 {
+            margin-top: 100;
+        }
+    </style>
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+    <script defer src="js/fontawesome/all.min.js"></script>
 
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+    <!-- favicons
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+</head>
 
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+<body id="top">
 
-                        <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+    @include('includes.navbar')
 
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+    	<div id="loader"></div>
     </div>
-</div>
-@endsection
+
+
+
+    <!-- content
+    ================================================== -->
+    <section class="">
+
+        <section class="s-styles">
+            <div class="row">
+                <div class="column large-3"></div>
+                <div class="column large-6 tab-12">
+
+                    <h3 class="h-add-bottom">Login Here</h3>
+
+                    <form method="POST" action="{{route('login')}}">
+                        @csrf
+                        <div>
+                            <label for="email">Your email</label>
+                            <input class="h-full-width" type="email" placeholder="test@mailbox.com" id="email" name="email" value="{{ old('email') }}">
+                            @error('email')
+                                    <p class="alert-box--error">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div>
+                            <label for="password">Password</label>
+                            <input class="h-full-width" type="password" id="password" name="password">
+                            @error('password')
+                                    <p class="alert-box--error">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <input class="btn--primary h-full-width" type="submit" value="Submit">
+                        <p>Don't have any account. Register <a href="{{route('register')}}">here</a>.</p>
+                    </form>
+
+                </div>
+
+            </div> <!-- end row -->
+
+        </section> <!-- end s-styles -->
+
+    </section> <!-- end s-content -->
+
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="js/jquery-3.5.0.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>

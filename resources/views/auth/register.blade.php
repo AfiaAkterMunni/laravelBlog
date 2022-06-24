@@ -95,7 +95,7 @@
                         </div>
 
                         <input class="btn--primary h-full-width" type="submit" value="Submit">
-                        <p>Already have an account. Login <a href="">here</a>.</p>
+                        <p>Already have an account. Login <a href="{{route('login')}}">here</a>.</p>
                     </form>
 
                 </div>

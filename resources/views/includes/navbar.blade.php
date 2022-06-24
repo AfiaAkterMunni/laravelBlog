@@ -30,12 +30,17 @@
                     </li>
                     <li><a href="{{ route('about') }}" title="">About</a></li>
                     <li><a href="{{ route('contact') }}" title="">Contact</a></li>
+                    <li><a>|</a></li>
                     @guest
                         <li><a href="{{ route('register') }}" title="">Register</a></li>
                         <li><a href="{{ route('login') }}" title="">Login</a></li>
                     @else
                         <li><a href="#" title="">Profile</a></li>
-                        <li><a href="#" title="">Logout</a></li>
+                        <li><a onclick="event.preventDefault(); document.getElementById('logout_form').submit();">Logout</a>
+                            <form method="POST" action="{{route('logout')}}" id="logout_form" style="display: none">
+                                @csrf
+                            </form>
+                        </li>
                     @endguest
 
                 </ul> <!-- end s-header__nav -->
