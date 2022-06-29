@@ -34,7 +34,11 @@
 
                             <div class="entry-author meta-blk">
                                 <div class="author-avatar">
-                                    <img class="avatar" src="{{asset('uploads/users/'.$blog->user->image)}}" alt="">
+                                    @if ($blog->user->image == null)
+                                        <img class="avatar" src="{{asset('images/nophoto.png')}}" alt="">
+                                    @else
+                                        <img class="avatar" src="{{asset('uploads/users/'.$blog->user->image)}}" alt="">
+                                    @endif
                                 </div>
                                 <div class="byline">
                                     <span class="bytext">Posted By</span>
@@ -104,7 +108,11 @@
                         <li class="depth-1 comment">
 
                             <div class="comment__avatar">
-                                <img class="avatar" src="{{asset('uploads/users/'.$comment->user->image)}}" alt="" width="50" height="50">
+                                @if ($comment->user->image == null)
+                                        <img class="avatar" src="{{asset('images/nophoto.png')}}" alt="" width="50" height="50">
+                                @else
+                                    <img class="avatar" src="{{asset('uploads/users/'.$comment->user->image)}}" alt="" width="50" height="50">
+                                @endif
                             </div>
 
                             <div class="comment__content">
@@ -132,7 +140,11 @@
                                             <li class="depth-2 comment">
 
                                                 <div class="comment__avatar">
-                                                    <img class="avatar" src="{{asset('uploads/users/'.$reply->user->image)}}" alt="" width="50" height="50">
+                                                    @if ($reply->user->image == null)
+                                                        <img class="avatar" src="{{asset('images/nophoto.png')}}" alt="" width="50" height="50">
+                                                    @else
+                                                        <img class="avatar" src="{{asset('uploads/users/'.$reply->user->image)}}" alt="" width="50" height="50">
+                                                    @endif
                                                 </div>
 
                                                 <div class="comment__content">
