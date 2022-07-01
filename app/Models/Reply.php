@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Reply extends Model
 {
     use HasFactory;
+    protected $fillable = ['reply', 'comment_id', 'user_id'];
 
     /**
      * Get the user data for the Reply/(inverse)
