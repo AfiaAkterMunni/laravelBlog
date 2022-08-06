@@ -39,7 +39,7 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item mr-3">
                         <a href="{{route('profile')}}" class="nav-link">
-                            <i class="fas fa-user"></i> Welcome Istiak Tushar
+                            <i class="fas fa-user"></i> Welcome {{Auth::user()->username}}
                         </a>
                     </li>
                     <li class="nav-item">

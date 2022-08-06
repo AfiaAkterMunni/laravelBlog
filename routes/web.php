@@ -9,6 +9,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\SubscribeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,6 +43,9 @@ Route::post('/reply', [ReplyController::class, 'store'])->name('reply.store');
 
 //route for dashboard
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+
+//update profile
+Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
 
 
