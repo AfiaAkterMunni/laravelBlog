@@ -26,13 +26,12 @@
                             <h4>Edit Profile</h4>
                         </div>
                         <div class="card-body">
-                            <div class="alert alert-success alert-dismissible">
-                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                                <strong>Success!</strong> This alert box could indicate a successful or positive action.
-                              </div>
                             @if (session('success'))
-                            <div class="alert-box--success" id="successBox">
+                            <div class="alert alert-success alert-dismissible fade show">
+                                <button type="button" class="close" data-bs-dismiss="alert">&times;</button>
                                 {{session('success')}}
+                              </div>
+                            <div class="alert-box--success" id="successBox">
                             </div>
                             @endif
                             <form action="{{route('profile.update')}}" method="POST">

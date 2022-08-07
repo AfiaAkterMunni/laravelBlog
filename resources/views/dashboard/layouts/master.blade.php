@@ -71,6 +71,7 @@
      <script src="{{asset('js/jquery-3.3.1.slim.min.js')}}"></script>
      <script src="{{asset('js/popper.min.js')}}"></script>
      <script src="{{asset('js/bootstrap.min.js')}}"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
      <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
      <script>
          CKEDITOR.replace('editor1');
