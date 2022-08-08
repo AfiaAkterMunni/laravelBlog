@@ -33,7 +33,7 @@ class UpdateUserRequest extends FormRequest
         return [
             'name' => 'string|required',
             'email' => 'email|required|unique:users,email,'.Auth::id(),
-            'image' => 'image|nullable',
+            'image' => 'image|nullable|mimes:jpg,png',
             'des' => 'string|nullable'
         ];
     }

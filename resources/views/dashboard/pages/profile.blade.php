@@ -34,7 +34,7 @@
                             <div class="alert-box--success" id="successBox">
                             </div>
                             @endif
-                            <form action="{{route('profile.update')}}" method="POST">
+                            <form action="{{route('profile.update')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <label for="name">Name</label>
