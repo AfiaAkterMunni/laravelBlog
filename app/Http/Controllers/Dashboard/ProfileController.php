@@ -20,6 +20,11 @@ class ProfileController extends Controller
 
     public function update(UpdateUserRequest $request)
     {
+        $data = [
+            'username' => $request->input('name'),
+            'email' => $request->input('email'),
+            'designation' => $request->input('des')
+        ];
         // check wheather user uploaded image or not
         if(isset($request->image))
         {
@@ -40,23 +45,10 @@ class ProfileController extends Controller
             // move new image to uploads folder
             $request->image->move('uploads/users/', $newImageName);
 
-            // update user data with image
-            User::where('id', Auth::id())->update([
-                'username' => $request->input('name'),
-                'email' => $request->input('email'),
-                'image' => $newImageName,
-                'designation' => $request->input('des')
-            ]);
+            $data['image'] = $newImageName;
         }
-        else
-        {
-            // update user data without image
-            User::where('id', Auth::id())->update([
-                'username' => $request->input('name'),
-                'email' => $request->input('email'),
-                'designation' => $request->input('des')
-            ]);
-        }
+        // update user data
+        User::where('id', Auth::id())->update($data);
         return redirect(route('profile'))->with('success', 'Your Info updated Successfully!');
     }
 }
