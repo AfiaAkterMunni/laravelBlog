@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Dasboard\ChangePasswordRequest;
 use App\Http\Requests\Dasboard\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -50,5 +52,20 @@ class ProfileController extends Controller
         // update user data
         User::where('id', Auth::id())->update($data);
         return redirect(route('profile'))->with('success', 'Your Info updated Successfully!');
+    }
+
+    public function changePassword(ChangePasswordRequest $request)
+    {
+        $id = Auth::id();
+        $password = User::find($id)->password;
+        if (Hash::check($request->oldPassword, $password)) {
+
+            User::where('id', Auth::id())->update([
+                'password' => Hash::make($request->password)
+            ]);
+            return redirect(route('profile'))->with('passwordSuccess', 'Your password change Successfully!');
+        }
+        return redirect(route('profile'))->with('passwordNotSuccess', 'Your old password do not match!');
+        // dd($password);
     }
 }

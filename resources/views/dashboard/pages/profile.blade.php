@@ -26,6 +26,22 @@
                             <h4>Edit Profile</h4>
                         </div>
                         <div class="card-body">
+                            @if (session('passwordNotSuccess'))
+                            <div class="alert alert-danger alert-dismissible fade show">
+                                <button type="button" class="close" data-bs-dismiss="alert">&times;</button>
+                                {{session('passwordNotSuccess')}}
+                              </div>
+                            <div class="alert-box--success" id="successBox">
+                            </div>
+                            @endif
+                            @if (session('passwordSuccess'))
+                            <div class="alert alert-success alert-dismissible fade show">
+                                <button type="button" class="close" data-bs-dismiss="alert">&times;</button>
+                                {{session('passwordSuccess')}}
+                              </div>
+                            <div class="alert-box--success" id="successBox">
+                            </div>
+                            @endif
                             @if (session('success'))
                             <div class="alert alert-success alert-dismissible fade show">
                                 <button type="button" class="close" data-bs-dismiss="alert">&times;</button>
@@ -98,24 +114,31 @@
                     <button class="close text-white" data-dismiss="modal"><span>&times;</span></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="{{route('profile.changePassword')}}" method="POST">
+                        @csrf
                         <div class="form-group">
                             <label for="password">Older Password</label>
-                            <input type="password" class="form-control">
+                            <input type="password" class="form-control" id="password" name="oldPassword">
+                            @error('oldPassword')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <label for="password">New Password</label>
-                            <input type="password" class="form-control">
+                            <label for="password1">New Password</label>
+                            <input type="password" class="form-control" id="password1" name="password">
+                            @error('password')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <label for="password">Confirm New Password</label>
-                            <input type="password" class="form-control">
+                            <label for="password2">Confirm New Password</label>
+                            <input type="password" class="form-control" id="password2" name="password_confirmation">
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button class="btn btn-primary" type="submit">Update Password</button>
                         </div>
                     </form>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button class="btn btn-primary" data-dismiss="modal">Update Password</button>
                 </div>
             </div>
         </div>
