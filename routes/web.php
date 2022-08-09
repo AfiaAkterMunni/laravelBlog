@@ -41,14 +41,18 @@ Route::post('/comment/store', [CommentController::class, 'store'])->name('commen
 Route::post('/subscribe', [SubscribeController::class, 'store'])->name('subscribe.store');
 Route::post('/reply', [ReplyController::class, 'store'])->name('reply.store');
 
-//route for dashboard
-Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+Route::middleware('auth')->group(function(){
 
-//update profile
-Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    //route for dashboard
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
 
-//change or update password
-Route::post('/profile/changePassword', [ProfileController::class, 'changePassword'])->name('profile.changePassword');
+    //update profile
+    Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
+    //change or update password
+    Route::post('/profile/changePassword', [ProfileController::class, 'changePassword'])->name('profile.changePassword');
+});
+
 
 
 
