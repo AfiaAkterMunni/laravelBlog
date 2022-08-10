@@ -29,7 +29,7 @@
                         <a href="{{route('profile')}}" class="nav-link">Profile</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a href="posts.html" class="nav-link">Posts</a>
+                        <a href="{{route('allblogs')}}" class="nav-link">Blogs</a>
                     </li>
                     <li class="nav-item px-2">
                         <a href="categories.html" class="nav-link">Categories</a>

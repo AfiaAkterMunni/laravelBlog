@@ -6,11 +6,14 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\Dashboard\AllBlogsController;
+use App\Http\Controllers\Dashboard\BlogController as DashboardBlogController;
 use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\SubscribeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,7 +54,14 @@ Route::middleware('auth')->group(function(){
 
     //change or update password
     Route::post('/profile/changePassword', [ProfileController::class, 'changePassword'])->name('profile.changePassword');
+
+    Route::get('/allblogs', [AllBlogsController::class, 'show'])->name('allblogs');
+
+
+
+
 });
+Route::get('/singleBlog', [DashboardBlogController::class, 'show'])->name('singleBlog');
 
 
 
