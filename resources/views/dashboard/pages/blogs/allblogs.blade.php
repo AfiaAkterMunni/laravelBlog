@@ -18,7 +18,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <a class="btn btn-success" href="{{route('singleBlog')}}">Add New Blog</a>
+                <a class="btn btn-success" href="{{route('blogs.create')}}"><i class="fas fa-plus"></i> Add New Blog</a>
             </div>
             <div class="col-md-6 ml-auto">
                 <div class="input-group">
@@ -62,8 +62,8 @@
                                 <td>July 01, 2019</td>
                                 <td></td>
                                 <td>
-                                    <a href="details.html" class="btn btn-warning">Update</a>
-                                    <a href="details.html" class="btn btn-danger">Delete</a>
+                                    <a href="{{route('blogs.edit')}}" class="btn btn-warning">Update</a>
+                                    <a href="#" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                             <tr>
@@ -74,8 +74,8 @@
                                 <td>July 02, 2019</td>
                                 <td></td>
                                 <td>
-                                    <a href="details.html" class="btn btn-warning">Update</a>
-                                    <a href="details.html" class="btn btn-danger">Delete</a>
+                                    <a href="{{route('blogs.edit')}}" class="btn btn-warning">Update</a>
+                                    <a href="#" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                             <tr>
@@ -86,8 +86,8 @@
                                 <td>July 03, 2019</td>
                                 <td></td>
                                 <td>
-                                    <a href="details.html" class="btn btn-warning">Update</a>
-                                    <a href="details.html" class="btn btn-danger">Delete</a>
+                                    <a href="{{route('blogs.edit')}}" class="btn btn-warning">Update</a>
+                                    <a href="#" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                             <tr>
@@ -98,8 +98,8 @@
                                 <td>July 04, 2019</td>
                                 <td></td>
                                 <td>
-                                    <a href="details.html" class="btn btn-warning">Update</a>
-                                    <a href="details.html" class="btn btn-danger">Delete</a>
+                                    <a href="{{route('blogs.edit')}}" class="btn btn-warning">Update</a>
+                                    <a href="#" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                             <tr>
@@ -110,8 +110,8 @@
                                 <td>July 05, 2019</td>
                                 <td></td>
                                 <td>
-                                    <a href="details.html" class="btn btn-warning">Update</a>
-                                    <a href="details.html" class="btn btn-danger">Delete</a>
+                                    <a href="{{route('blogs.edit')}}" class="btn btn-warning">Update</a>
+                                    <a href="#" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                             <tr>
@@ -122,8 +122,8 @@
                                 <td>July 06, 2019</td>
                                 <td></td>
                                 <td>
-                                    <a href="details.html" class="btn btn-warning">Update</a>
-                                    <a href="details.html" class="btn btn-danger">Delete</a>
+                                    <a href="{{route('blogs.edit')}}" class="btn btn-warning">Update</a>
+                                    <a href="#" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                         </tbody>

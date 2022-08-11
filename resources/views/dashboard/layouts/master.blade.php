@@ -29,10 +29,10 @@
                         <a href="{{route('profile')}}" class="nav-link">Profile</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a href="{{route('allblogs')}}" class="nav-link">Blogs</a>
+                        <a href="{{route('blogs.index')}}" class="nav-link">Blogs</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a href="categories.html" class="nav-link">Categories</a>
+                        <a href="{{route('blog.category')}}" class="nav-link">Categories</a>
                     </li>
                 </ul>
 

@@ -7,8 +7,10 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Dashboard\AllBlogsController;
-use App\Http\Controllers\Dashboard\BlogController as DashboardBlogController;
+use App\Http\Controllers\Dashboard\AllCategoryController;
+use App\Http\Controllers\Dashboard\BlogController as DashBlogController;
 use App\Http\Controllers\Dashboard\ProfileController;
+use App\Http\Controllers\Dashboard\UpdateBlogController;
 use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\SubscribeController;
 use Illuminate\Support\Facades\Auth;
@@ -44,7 +46,7 @@ Route::post('/comment/store', [CommentController::class, 'store'])->name('commen
 Route::post('/subscribe', [SubscribeController::class, 'store'])->name('subscribe.store');
 Route::post('/reply', [ReplyController::class, 'store'])->name('reply.store');
 
-Route::middleware('auth')->group(function(){
+Route::prefix('dashboard')->middleware('auth')->group(function(){
 
     //route for dashboard
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
@@ -55,13 +57,15 @@ Route::middleware('auth')->group(function(){
     //change or update password
     Route::post('/profile/changePassword', [ProfileController::class, 'changePassword'])->name('profile.changePassword');
 
-    Route::get('/allblogs', [AllBlogsController::class, 'show'])->name('allblogs');
+    Route::get('/blogs', [DashBlogController::class, 'index'])->name('blogs.index');
 
+    Route::get('/blogs/create', [DashBlogController::class, 'create'])->name('blogs.create');
 
+    Route::get('/blogs/edit', [DashBlogController::class, 'edit'])->name('blogs.edit');
 
-
+    Route::get('/category', [AllCategoryController::class, 'show'])->name('blog.category');
 });
-Route::get('/singleBlog', [DashboardBlogController::class, 'show'])->name('singleBlog');
+
 
 
 
