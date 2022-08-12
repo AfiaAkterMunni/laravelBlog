@@ -10,19 +10,19 @@ class BlogController extends Controller
     //All Blogs show
     public function index()
     {
-        return view('dashboard.pages.blogs.allblogs');
+        return view('dashboard.pages.blogs.index');
     }
 
     //showing create form
     public function create()
     {
-        return view('dashboard.pages.blogs.blog');
+        return view('dashboard.pages.blogs.create');
     }
 
     //showing edit form
     public function edit()
     {
-        return view('dashboard.pages.blogs.updateblog');
+        return view('dashboard.pages.blogs.edit');
     }
 
 

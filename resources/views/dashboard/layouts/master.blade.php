@@ -26,19 +26,19 @@
                         <a href="{{route('homePage')}}" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a href="{{route('profile')}}" class="nav-link">Profile</a>
+                        <a href="{{route('profile.edit')}}" class="nav-link">Profile</a>
                     </li>
                     <li class="nav-item px-2">
                         <a href="{{route('blogs.index')}}" class="nav-link">Blogs</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a href="{{route('blog.category')}}" class="nav-link">Categories</a>
+                        <a href="{{route('category.index')}}" class="nav-link">Categories</a>
                     </li>
                 </ul>
 
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item mr-3">
-                        <a href="{{route('profile')}}" class="nav-link">
+                        <a href="{{route('profile.edit')}}" class="nav-link">
                             <i class="fas fa-user"></i> Welcome {{Auth::user()->username}}
                         </a>
                     </li>

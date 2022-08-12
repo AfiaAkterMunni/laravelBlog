@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.master')
-@section('title', 'All Blogs')
+@section('title', 'All Categories')
 @section('content')
 
 <!-- HEADER -->
@@ -18,7 +18,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <a href="#" class="btn btn-success btn-block" data-toggle="modal" data-target="#addCategoryModal">
+                <a href="{{route('category.create')}}" class="btn btn-success btn-block">
                     <i class="fas fa-plus"></i> Add New Category
                 </a>
             </div>
@@ -49,6 +49,7 @@
                                 <th>#</th>
                                 <th>Category</th>
                                 <th>Date Posted</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -56,31 +57,55 @@
                                 <td scope="row">1</td>
                                 <td>Web Development</td>
                                 <td>July 01, 2019</td>
+                                <td>
+                                    <a href="{{route('category.edit')}}" class="btn btn-warning">Update</a>
+                                    <a href="#" class="btn btn-danger">Delete</a>
+                                </td>
                             </tr>
                             <tr>
                                 <td scope="row">1</td>
                                 <td>Web Development</td>
                                 <td>July 01, 2019</td>
+                                <td>
+                                    <a href="{{route('category.edit')}}" class="btn btn-warning">Update</a>
+                                    <a href="#" class="btn btn-danger">Delete</a>
+                                </td>
                             </tr>
                             <tr>
                                 <td scope="row">1</td>
                                 <td>Web Development</td>
                                 <td>July 01, 2019</td>
+                                <td>
+                                    <a href="{{route('category.edit')}}" class="btn btn-warning">Update</a>
+                                    <a href="#" class="btn btn-danger">Delete</a>
+                                </td>
                             </tr>
                             <tr>
                                 <td scope="row">1</td>
                                 <td>Web Development</td>
                                 <td>July 01, 2019</td>
+                                <td>
+                                    <a href="{{route('category.edit')}}" class="btn btn-warning">Update</a>
+                                    <a href="#" class="btn btn-danger">Delete</a>
+                                </td>
                             </tr>
                             <tr>
                                 <td scope="row">1</td>
                                 <td>Web Development</td>
                                 <td>July 01, 2019</td>
+                                <td>
+                                    <a href="{{route('category.edit')}}" class="btn btn-warning">Update</a>
+                                    <a href="#" class="btn btn-danger">Delete</a>
+                                </td>
                             </tr>
                             <tr>
                                 <td scope="row">1</td>
                                 <td>Web Development</td>
                                 <td>July 01, 2019</td>
+                                <td>
+                                    <a href="{{route('category.edit')}}" class="btn btn-warning">Update</a>
+                                    <a href="#" class="btn btn-danger">Delete</a>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

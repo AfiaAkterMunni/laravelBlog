@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.master')
-@section('title', 'Blog')
+@section('title', 'Blog | Update')
 @section('content')
 
 
@@ -8,7 +8,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h1>Create A New Blog</h1>
+                    <h1>Update Category Here</h1>
                 </div>
             </div>
         </div>
@@ -22,31 +22,13 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Add Blog</h4>
+                            <h4>Edit Category</h4>
                         </div>
                         <div class="card-body">
                             <form>
                                 <div class="form-group">
                                     <label for="title">Title</label>
-                                    <input type="text" class="form-control" value="">
-                                </div>
-                                <div class="form-group">
-                                    <label for="category">Category</label>
-                                    <select class="form-control">
-                                        <option value="">Web Development</option>
-                                        <option value="">Tech Gadgets</option>
-                                        <option value="">Business</option>
-                                        <option value="">Health &amp; Wellness</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="file">Image Upload</label>
-                                    <input type="file" class="form-control-file">
-                                    <small class="form-text text-muted">Max Size 3mb</small>
-                                </div>
-                                <div class="form-group">
-                                    <label for="body">Body</label>
-                                    <textarea name="editor1" class="form-control"></textarea>
+                                    <input type="text" class="form-control" value="Wed Development">
                                 </div>
                             </form>
                         </div>

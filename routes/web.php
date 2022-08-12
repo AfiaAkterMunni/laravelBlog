@@ -6,16 +6,13 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
-use App\Http\Controllers\Dashboard\AllBlogsController;
-use App\Http\Controllers\Dashboard\AllCategoryController;
-use App\Http\Controllers\Dashboard\BlogController as DashBlogController;
+use App\Http\Controllers\Dashboard\BlogController as DashboardBlogController;
+use App\Http\Controllers\Dashboard\CategoryController as DashboardCategoryController;
 use App\Http\Controllers\Dashboard\ProfileController;
-use App\Http\Controllers\Dashboard\UpdateBlogController;
 use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\SubscribeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,22 +45,30 @@ Route::post('/reply', [ReplyController::class, 'store'])->name('reply.store');
 
 Route::prefix('dashboard')->middleware('auth')->group(function(){
 
-    //route for dashboard
-    Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+    // route for showing the profile edit blade
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 
-    //update profile
+    // update profile functionality
     Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
-    //change or update password
+    // change or update password
     Route::post('/profile/changePassword', [ProfileController::class, 'changePassword'])->name('profile.changePassword');
 
-    Route::get('/blogs', [DashBlogController::class, 'index'])->name('blogs.index');
+    // showing all blogs
+    Route::get('/blogs', [DashboardBlogController::class, 'index'])->name('blogs.index');
 
-    Route::get('/blogs/create', [DashBlogController::class, 'create'])->name('blogs.create');
+    // showing blog create form blade
+    Route::get('/blogs/create', [DashboardBlogController::class, 'create'])->name('blogs.create');
 
-    Route::get('/blogs/edit', [DashBlogController::class, 'edit'])->name('blogs.edit');
+    // showing blog edit functionality
+    Route::get('/blogs/edit', [DashboardBlogController::class, 'edit'])->name('blogs.edit');
 
-    Route::get('/category', [AllCategoryController::class, 'show'])->name('blog.category');
+    Route::get('/category', [DashboardCategoryController::class, 'index'])->name('category.index');
+
+    Route::get('/category/create', [DashboardCategoryController::class, 'create'])->name('category.create');
+
+    Route::get('/category/edit', [DashboardCategoryController::class, 'edit'])->name('category.edit');
+
 });
 
 

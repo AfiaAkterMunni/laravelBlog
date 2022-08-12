@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
-    public function show()
+    public function edit()
     {
         $id = Auth::id();
         $user = User::find($id);
