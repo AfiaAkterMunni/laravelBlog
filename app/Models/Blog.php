@@ -20,9 +20,9 @@ class Blog extends Model
     /**
      * Get the category data for the Blog/(inverse)
      */
-    public function categories()
+    public function category()
     {
-        return $this->belongsToMany(category::class);
+        return $this->belongsTo(category::class);
     }
 
     /**

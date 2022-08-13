@@ -18,11 +18,9 @@
                 <div class="row s-hero__slide-content animate-this">
                     <div class="column">
                         <div class="s-hero__slide-meta">
-                            @foreach ($slider->categories as $category)
                             <span class="cat-links">
-                                <a href="#0">{{$category->name}}</a>
+                                <a href="#0">{{$slider->category->name}}</a>
                             </span>
-                            @endforeach
 
                             <span class="byline">
                                 Posted by

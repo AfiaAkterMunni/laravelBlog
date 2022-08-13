@@ -16,7 +16,7 @@ class Category extends Model
      */
     public function blogs()
     {
-        return $this->belongsToMany(Blog::class);
+        return $this->hasMany(Blog::class);
     }
      /**
      * The attributes that are mass assignable.

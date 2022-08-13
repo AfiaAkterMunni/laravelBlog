@@ -61,10 +61,7 @@
 
                                 <div class="entry-tags meta-blk">
                                     <span class="tagtext">Categories</span>
-
-                                    @foreach ($blog->categories as $category)
-                                        <a href="#">{{ $category->name }}</a>
-                                    @endforeach
+                                        <a href="#">{{ $blog->category->name }}</a>
                                 </div>
 
                             </div>
