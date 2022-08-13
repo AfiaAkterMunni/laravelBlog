@@ -69,6 +69,8 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
 
     Route::get('/category/edit', [DashboardCategoryController::class, 'edit'])->name('category.edit');
 
+    Route::post('/category/store', [DashboardCategoryController::class, 'store'])->name('category.store');
+
 });
 
 

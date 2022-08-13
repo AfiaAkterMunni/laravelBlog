@@ -51,7 +51,7 @@ class ProfileController extends Controller
         }
         // update user data
         User::where('id', Auth::id())->update($data);
-        return redirect(route('profile'))->with('success', 'Your Info updated Successfully!');
+        return redirect(route('profile.edit'))->with('success', 'Your Info updated Successfully!');
     }
 
     public function changePassword(ChangePasswordRequest $request)

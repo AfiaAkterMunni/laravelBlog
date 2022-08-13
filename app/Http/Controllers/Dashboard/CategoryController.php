@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Dasboard\StoreCategoryRequest;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -16,8 +18,18 @@ class CategoryController extends Controller
     {
         return view('dashboard.pages.categories.create');
     }
+
     public function edit()
     {
         return view('dashboard.pages.categories.edit');
+    }
+
+    public function store(StoreCategoryRequest $request)
+    {
+        // dd($request);
+        Category::create([
+            'name' => $request->input('category_name')
+        ]);
+        return redirect(route('category.create'))->with('category', 'Category created successfully!');
     }
 }

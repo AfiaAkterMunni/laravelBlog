@@ -9,6 +9,8 @@ class Category extends Model
 {
     use HasFactory;
 
+
+
     /**
      * Get the Blog data for the category /(inverse).
      */
@@ -16,4 +18,10 @@ class Category extends Model
     {
         return $this->belongsToMany(Blog::class);
     }
+     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['name'];
 }
