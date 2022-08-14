@@ -54,90 +54,25 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($blogs as $key => $blog)
                             <tr>
-                                <td scope="row">1</td>
-                                <td>Post One</td>
-                                <td>Web Development</td>
-                                <td></td>
-                                <td>July 01, 2019</td>
+                                <td scope="row">{{$blog->id}}</td>
+                                <td>{{$blog->title}}</td>
+                                <td>{{$blog->category->name}}</td>
+                                <td>
+                                    <img src="{{asset('uploads/blogs/'.$blog->image)}}" width="50" height="50">
+                                </td>
+                                <td>{{$blog->created_at->format('M d, Y')}}</td>
                                 <td></td>
                                 <td>
                                     <a href="{{route('blogs.edit')}}" class="btn btn-warning">Update</a>
                                     <a href="#" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
-                            <tr>
-                                <td scope="row">2</td>
-                                <td>Post Two</td>
-                                <td>Tech Gadgets</td>
-                                <td></td>
-                                <td>July 02, 2019</td>
-                                <td></td>
-                                <td>
-                                    <a href="{{route('blogs.edit')}}" class="btn btn-warning">Update</a>
-                                    <a href="#" class="btn btn-danger">Delete</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td scope="row">3</td>
-                                <td>Post Three</td>
-                                <td>Web Design</td>
-                                <td></td>
-                                <td>July 03, 2019</td>
-                                <td></td>
-                                <td>
-                                    <a href="{{route('blogs.edit')}}" class="btn btn-warning">Update</a>
-                                    <a href="#" class="btn btn-danger">Delete</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td scope="row">4</td>
-                                <td>Post Four</td>
-                                <td>Business</td>
-                                <td></td>
-                                <td>July 04, 2019</td>
-                                <td></td>
-                                <td>
-                                    <a href="{{route('blogs.edit')}}" class="btn btn-warning">Update</a>
-                                    <a href="#" class="btn btn-danger">Delete</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td scope="row">5</td>
-                                <td>Post Five</td>
-                                <td>Graphics Design</td>
-                                <td></td>
-                                <td>July 05, 2019</td>
-                                <td></td>
-                                <td>
-                                    <a href="{{route('blogs.edit')}}" class="btn btn-warning">Update</a>
-                                    <a href="#" class="btn btn-danger">Delete</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td scope="row">6</td>
-                                <td>Post Six</td>
-                                <td>Health &amp; Wellness</td>
-                                <td></td>
-                                <td>July 06, 2019</td>
-                                <td></td>
-                                <td>
-                                    <a href="{{route('blogs.edit')}}" class="btn btn-warning">Update</a>
-                                    <a href="#" class="btn btn-danger">Delete</a>
-                                </td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
-
-                    <nav class="ml-4">
-                        <ul class="pagination">
-                            <li class="page-item disabled"><a href="#" class="page-link">Previous</a></li>
-                            <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                            <li class="page-item"><a href="#" class="page-link">2</a></li>
-                            <li class="page-item"><a href="#" class="page-link">3</a></li>
-                            <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                        </ul>
-                    </nav>
+                    {{ $blogs->links() }}
                 </div>
             </div>
         </div>

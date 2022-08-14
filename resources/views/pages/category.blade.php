@@ -63,7 +63,7 @@
                                     </div>
                                 </div>
                                 <div class="entry__excerpt">
-                                    <p>{{ Str::limit($blog->description, 100) }}</p>
+                                    {!! Str::limit($blog->description, 100) !!}
                                 </div>
                                 <span>
                                     <a class="entry__more-link" href="{{route('blog', ['id' => $blog->id])}}">Learn More</a>

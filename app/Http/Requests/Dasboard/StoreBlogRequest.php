@@ -3,16 +3,15 @@
 namespace App\Http\Requests\Dasboard;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
 
-class UpdateUserRequest extends FormRequest
+class StoreBlogRequest extends FormRequest
 {
-    /**
+     /**
      * The url that users should be redirected to if validation fails.
      *
      * @var string
      */
-    protected $redirect = '/profile';
+    protected $redirect = 'dashboard/blogs/create';
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -31,10 +30,10 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         return [
-            '' => 'string|required',
-            'email' => 'email|required|unique:users,email,'.Auth::id(),
+            'title' => 'string|required',
+            'category' => 'required',
             'image' => 'image|nullable|mimes:jpg,png',
-            'des' => 'string|nullable'
+            'editor1' => 'string|required'
         ];
     }
 }

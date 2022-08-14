@@ -11,7 +11,10 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        return view('dashboard.pages.categories.index');
+        $categories = Category::paginate(3);
+        return view('dashboard.pages.categories.index', [
+            'categories' => $categories
+        ]);
     }
 
     public function create()

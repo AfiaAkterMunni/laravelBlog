@@ -71,6 +71,8 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
 
     Route::post('/category/store', [DashboardCategoryController::class, 'store'])->name('category.store');
 
+    Route::post('/blogs/store', [DashboardBlogController::class, 'store'])->name('blogs.store');
+
 });
 
 

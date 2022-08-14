@@ -23,10 +23,8 @@
 
                     <div class="s-content__primary">
 
-                        <div class="s-content__entry-content">
-
-                            <p class="lead">
-                                {{ $blog->description }} </p>
+                        <div class="s-content__entry-content lead">
+                                {!! $blog->description !!}
 
                         </div> <!-- end s-entry__entry-content -->
 
