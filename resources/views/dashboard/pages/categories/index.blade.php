@@ -43,6 +43,14 @@
                         <div class="card-header">
                             <h4>Latest Blogs</h4>
                         </div>
+                        @if (session('categoryDelete'))
+                            <div class="alert alert-success alert-dismissible fade show">
+                                <button type="button" class="close" data-bs-dismiss="alert">&times;</button>
+                                {{ session('categoryDelete') }}
+                            </div>
+                            <div class="alert-box--success" id="successBox">
+                            </div>
+                        @endif
                         <table class="table table-striped">
                             <thead class="thead-dark">
                                 <tr>
@@ -54,15 +62,22 @@
                             </thead>
                             <tbody>
                                 @foreach ($categories as $key => $category)
-                                <tr>
-                                    <td scope="row">{{$category->id }}</td>
-                                    <td>{{$category->name}}</td>
-                                    <td>{{$category->created_at->format('M d, Y')}}</td>
-                                    <td>
-                                        <a href="{{ route('category.edit') }}" class="btn btn-warning">Update</a>
-                                        <a href="#" class="btn btn-danger">Delete</a>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td scope="row">{{ $key + ($categories->perPage() * ($categories->currentPage() - 1)) + 1 }}</td>
+                                        <td>{{ $category->name }}</td>
+                                        <td>{{ $category->created_at->format('M d, Y') }}</td>
+                                        <td>
+                                            <a href="{{ route('category.edit', ['id' => $category->id]) }}"
+                                                class="btn btn-warning">Update</a>
+                                            <span style="display: inline-block">
+                                                <form method="post"
+                                                    action="{{ route('category.delete', ['id' => $category->id]) }}">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                </form>
+                                            </span>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>

@@ -12,7 +12,7 @@ class UpdateUserRequest extends FormRequest
      *
      * @var string
      */
-    protected $redirect = '/profile';
+    protected $redirect = 'dashboard/profile/edit';
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -31,8 +31,8 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         return [
-            '' => 'string|required',
-            'email' => 'email|required|unique:users,email,'.Auth::id(),
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users,email,'.Auth::id(),
             'image' => 'image|nullable|mimes:jpg,png',
             'des' => 'string|nullable'
         ];

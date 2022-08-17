@@ -25,10 +25,27 @@
                             <h4>Edit Category</h4>
                         </div>
                         <div class="card-body">
-                            <form>
+                            @if (session('categoryUpdate'))
+                            <div class="alert alert-success alert-dismissible fade show">
+                                <button type="button" class="close" data-bs-dismiss="alert">&times;</button>
+                                {{session('categoryUpdate')}}
+                              </div>
+                            <div class="alert-box--success" id="successBox">
+                            </div>
+                            @endif
+                            <form action="{{route('category.update', ['id' => $category->id])}}" method="POST">
+                                @csrf
                                 <div class="form-group">
                                     <label for="title">Title</label>
-                                    <input type="text" class="form-control" value="Wed Development">
+                                    <input type="text" name="title" class="form-control" value="{{ old('email') ?? $category->name}}">
+                                    @error('title')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                                <div class="col-md-3 mr-auto">
+                                    <button type="submit" class="btn btn-success btn-block">
+                                        <i class="fas fa-check"></i> Save
+                                    </button>
                                 </div>
                             </form>
                         </div>
@@ -42,11 +59,7 @@
         <section id="actions" class="py-4 mb-4">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3 mr-auto">
-                        <a href="#" class="btn btn-success btn-block">
-                            <i class="fas fa-check"></i> Save
-                        </a>
-                    </div>
+
                 </div>
             </div>
         </section><!-- ./ACTIONS -->
