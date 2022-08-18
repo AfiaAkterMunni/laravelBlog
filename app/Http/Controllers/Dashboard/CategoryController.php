@@ -53,7 +53,6 @@ class CategoryController extends Controller
 
     public function delete($id)
     {
-
         $category = Category::find($id);
         Category::where('id', $category->id)->delete();
         return redirect(url()->previous())->with('categoryDelete', 'Category Deleted successfully!');

@@ -88,4 +88,13 @@ class BlogController extends Controller
 
     }
 
+    public function delete($id)
+    {
+        $oldimage = Blog::find($id)->image;
+        unlink('uploads/blogs/'.$oldimage);
+        Blog::where('id', $id)->delete();
+        return redirect(url()->previous())->with('blogDelete', 'Blog Deleted successfully!');
+    }
+
+
 }

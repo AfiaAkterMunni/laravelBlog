@@ -41,7 +41,7 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Latest Blogs</h4>
+                            <h4>Latest Categories</h4>
                         </div>
                         @if (session('categoryDelete'))
                             <div class="alert alert-success alert-dismissible fade show">

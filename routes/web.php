@@ -82,6 +82,9 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
 
     Route::post('/blog/update/{id}', [DashboardBlogController::class, 'update'])->name('blog.update');
 
+    Route::post('/blog/delete/{id}', [DashboardBlogController::class, 'delete'])->name('blog.delete');
+
+
 
 });
 

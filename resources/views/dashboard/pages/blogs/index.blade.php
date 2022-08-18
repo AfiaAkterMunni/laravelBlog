@@ -41,6 +41,14 @@
                     <div class="card-header">
                         <h4>Latest Blogs</h4>
                     </div>
+                    @if (session('blogDelete'))
+                            <div class="alert alert-success alert-dismissible fade show">
+                                <button type="button" class="close" data-bs-dismiss="alert">&times;</button>
+                                {{ session('blogDelete') }}
+                            </div>
+                            <div class="alert-box--success" id="successBox">
+                            </div>
+                        @endif
                     <table class="table table-striped">
                         <thead class="thead-dark">
                             <tr>
@@ -56,7 +64,7 @@
                         <tbody>
                             @foreach ($blogs as $key => $blog)
                             <tr>
-                                <td scope="row">{{$blog->id}}</td>
+                                <td scope="row">{{ $key + ($blogs->perPage() * ($blogs->currentPage() - 1)) + 1 }}</td>
                                 <td>{{$blog->title}}</td>
                                 <td>{{$blog->category->name}}</td>
                                 <td>
@@ -66,7 +74,12 @@
                                 <td></td>
                                 <td>
                                     <a href="{{route('blogs.edit', ['id' => $blog->id])}}" class="btn btn-warning">Edit</a>
-                                    <a href="#" class="btn btn-danger">Delete</a>
+                                    <span style="display: inline-block">
+                                        <form method="post" action="{{ route('blog.delete', ['id' => $blog->id]) }}">
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
+                                    </span>
                                 </td>
                             </tr>
                             @endforeach
