@@ -37,7 +37,7 @@
                                 @csrf
                                 <div class="form-group">
                                     <label for="title">Title</label>
-                                    <input type="text" name="title" class="form-control" value="{{ old('email') ?? $category->name}}">
+                                    <input type="text" name="title" class="form-control" value="{{  $category->name}}">
                                     @error('title')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror

@@ -65,7 +65,7 @@
                                 <td>{{$blog->created_at->format('M d, Y')}}</td>
                                 <td></td>
                                 <td>
-                                    <a href="{{route('blogs.edit')}}" class="btn btn-warning">Update</a>
+                                    <a href="{{route('blogs.edit', ['id' => $blog->id])}}" class="btn btn-warning">Edit</a>
                                     <a href="#" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>

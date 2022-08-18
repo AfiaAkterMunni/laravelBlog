@@ -23,30 +23,54 @@
                             <h4>Edit Blog</h4>
                         </div>
                         <div class="card-body">
-                            <form>
+                            @if (session('success'))
+                            <div class="alert alert-success alert-dismissible fade show">
+                                <button type="button" class="close" data-bs-dismiss="alert">&times;</button>
+                                {{session('success')}}
+                              </div>
+                            <div class="alert-box--success" id="successBox">
+                            </div>
+                            @endif
+                            <form action="{{route('blog.update', ['id' => $blog->id])}}" method="POST"  enctype="multipart/form-data">
+                                @csrf
                                 <div class="form-group">
                                     <label for="title">Title</label>
-                                    <input type="text" class="form-control" value="Post One">
+                                    <input type="text" name="title" class="form-control" value="{{ old('title') ?? $blog->title}}">
+                                    @error('title')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="category">Category</label>
-                                    <select class="form-control">
-                                        <option value="">Web Development</option>
-                                        <option value="">Tech Gadgets</option>
-                                        <option value="">Business</option>
-                                        <option value="">Health &amp; Wellness</option>
+                                    <select class="form-control" name="category">
+                                        @foreach ( $categories as $category )
+                                            <option value="{{$category->id}}" @if (old('category') == $category->id) selected @elseif ($blog->category_id == $category->id) selected @endif>{{$category->name}}</option>
+                                        @endforeach
                                     </select>
+                                    @error('category')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="file">Image Upload</label>
-                                    <input type="file" class="form-control-file">
-                                    <small class="form-text text-muted">Max Size 3mb</small>
+                                    <input type="file" name="image" class="form-control-file">
+                                    @error('image')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="body">Body</label>
+                                    <label for="body">Description</label>
                                     <textarea name="editor1" class="form-control">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae aut repellat qui dolores asperiores possimus, ipsum laborum illum natus voluptates dignissimos sapiente, voluptatem repudiandae ab unde? Ad esse quidem omnis.
+                                        {{ old('editor1') ?? $blog->description}}
                                     </textarea>
+                                    @error('editor1')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                                <div class="col-md-3 mr-auto">
+                                    <button class="btn btn-success btn-block" type="submit">
+                                        <i class="fas fa-check"></i> Update
+                                    </button>
                                 </div>
                             </form>
                         </div>
@@ -55,18 +79,5 @@
             </div>
         </div>
     </section><!-- ./POSTS -->
-
-     <!-- ACTIONS -->
-     <section id="actions" class="py-4 mb-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 mr-auto">
-                    <a href="#" class="btn btn-success btn-block">
-                        <i class="fas fa-check"></i> Save
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section><!-- ./ACTIONS -->
 
 @endsection

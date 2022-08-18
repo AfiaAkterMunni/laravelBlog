@@ -54,15 +54,7 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
     // change or update password
     Route::post('/profile/changePassword', [ProfileController::class, 'changePassword'])->name('profile.changePassword');
 
-    // showing all blogs
-    Route::get('/blogs', [DashboardBlogController::class, 'index'])->name('blogs.index');
-
-    // showing blog create form blade
-    Route::get('/blogs/create', [DashboardBlogController::class, 'create'])->name('blogs.create');
-
-    // showing blog edit functionality
-    Route::get('/blogs/edit', [DashboardBlogController::class, 'edit'])->name('blogs.edit');
-
+    // Category Functionality
     Route::get('/category', [DashboardCategoryController::class, 'index'])->name('category.index');
 
     Route::get('/category/create', [DashboardCategoryController::class, 'create'])->name('category.create');
@@ -71,13 +63,24 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
 
     Route::post('/category/store', [DashboardCategoryController::class, 'store'])->name('category.store');
 
-    Route::post('/blogs/store', [DashboardBlogController::class, 'store'])->name('blogs.store');
-
     Route::post('/category/update/{id}', [DashboardCategoryController::class, 'update'])->name('category.update');
 
     Route::post('/category/delete/{id}', [DashboardCategoryController::class, 'delete'])->name('category.delete');
 
-    Route::post('/category/update/{id}', [DashboardCategoryController::class, 'update'])->name('category.update');
+
+    //-----------Blogs Functionality-------------//
+
+    // showing all blogs
+    Route::get('/blogs', [DashboardBlogController::class, 'index'])->name('blogs.index');
+
+    // showing blog create form blade
+    Route::get('/blogs/create', [DashboardBlogController::class, 'create'])->name('blogs.create');
+
+    Route::post('/blogs/store', [DashboardBlogController::class, 'store'])->name('blogs.store');
+
+    Route::get('/blogs/edit/{id}', [DashboardBlogController::class, 'edit'])->name('blogs.edit');
+
+    Route::post('/blog/update/{id}', [DashboardBlogController::class, 'update'])->name('blog.update');
 
 
 });

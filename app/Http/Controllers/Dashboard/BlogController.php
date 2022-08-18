@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dasboard\StoreBlogRequest;
+use App\Http\Requests\Dasboard\UpdateBlogRequest;
 use App\Models\Blog;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -30,9 +31,14 @@ class BlogController extends Controller
     }
 
     //showing edit form
-    public function edit()
+    public function edit($id)
     {
-        return view('dashboard.pages.blogs.edit');
+        $blog = Blog::find($id);
+        $categories =Category::get();
+        return view('dashboard.pages.blogs.edit',[
+            'blog' => $blog,
+            'categories' => $categories
+        ]);
     }
 
     public function store(StoreBlogRequest $request)
@@ -53,6 +59,33 @@ class BlogController extends Controller
         }
         Blog::create($data);
         return redirect(route('blogs.create'))->with('createBlog', 'Your Blog Created Successfully!!!');
+    }
+
+    public function update(UpdateBlogRequest $request, $id)
+    {
+        $data = [
+            'title' => $request->input('title'),
+            'category_id' => $request->input('category'),
+            'description' => $request->input('editor1')
+        ];
+
+        if(isset($request->image))
+        {
+            $oldimage = Blog::find($id)->image;
+
+            if($oldimage)
+            {
+                // delete old image from upload folder
+                unlink('uploads/blogs/'.$oldimage);
+            }
+            $newImageName = rand().'.'.$request->image->getClientOriginalExtension();
+            $request->image->move('uploads/blogs/', $newImageName);
+            $data['image'] = $newImageName;
+        }
+        Blog::where('id', $id)->update($data);
+        return redirect(url()->previous())->with('success', 'Your Blog updated Successfully!');
+
+
     }
 
 }
