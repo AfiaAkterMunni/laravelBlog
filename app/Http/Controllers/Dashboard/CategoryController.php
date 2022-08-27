@@ -7,6 +7,7 @@ use App\Http\Requests\Dasboard\SearchCategoryRequest;
 use App\Http\Requests\Dasboard\StoreCategoryRequest;
 use App\Http\Requests\Dasboard\UpdateCategoryRequest;
 use App\Http\Requests\Dasboard\UpdateUserRequest;
+use App\Models\Blog;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -55,6 +56,15 @@ class CategoryController extends Controller
     public function delete($id)
     {
         $category = Category::find($id);
+        $blogs = $category->blogs;
+        foreach ($blogs as $blog) {
+            $oldimage = $blog->image;
+            if ($oldimage) {
+                unlink('uploads/blogs/' . $oldimage);
+            }
+            Blog::where('id', $blog->id)->delete();
+        }
+
         Category::where('id', $category->id)->delete();
         return redirect(url()->previous())->with('categoryDelete', 'Category Deleted successfully!');
     }
@@ -66,7 +76,5 @@ class CategoryController extends Controller
         return view('dashboard.pages.categories.index', [
             'categories' => $categories
         ]);
-
     }
-
 }
