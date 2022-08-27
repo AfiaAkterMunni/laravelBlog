@@ -71,7 +71,7 @@
                                     <img src="{{asset('uploads/blogs/'.$blog->image)}}" width="50" height="50">
                                 </td>
                                 <td>{{$blog->created_at->format('M d, Y')}}</td>
-                                <td></td>
+                                <td>{{$blog->view_count}}</td>
                                 <td>
                                     <a href="{{route('blogs.edit', ['id' => $blog->id])}}" class="btn btn-warning">Edit</a>
                                     <span style="display: inline-block">
