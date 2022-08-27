@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Dasboard\SearchCategoryRequest;
 use App\Http\Requests\Dasboard\StoreCategoryRequest;
 use App\Http\Requests\Dasboard\UpdateCategoryRequest;
 use App\Http\Requests\Dasboard\UpdateUserRequest;
@@ -56,6 +57,16 @@ class CategoryController extends Controller
         $category = Category::find($id);
         Category::where('id', $category->id)->delete();
         return redirect(url()->previous())->with('categoryDelete', 'Category Deleted successfully!');
+    }
+
+    public function search(SearchCategoryRequest $request)
+    {
+        // dd($request->search);
+        $categories = Category::where('name', 'LIKE', "%$request->search%")->paginate(5);
+        return view('dashboard.pages.categories.index', [
+            'categories' => $categories
+        ]);
+
     }
 
 }

@@ -23,12 +23,18 @@
                     </a>
                 </div>
                 <div class="col-md-6 ml-auto">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                        <span class="input-group-btn">
-                            <button class="btn btn-primary">Search</button>
-                        </span>
-                    </div>
+                    <form action="{{route('category.search')}}" method="GET">
+                        @csrf
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search" name="search">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="submit">Search</button>
+                            </span>
+                        </div>
+                        @error('search')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
+                    </form>
                 </div>
             </div>
         </div>
@@ -51,6 +57,9 @@
                             <div class="alert-box--success" id="successBox">
                             </div>
                         @endif
+                        @if(count($categories) == 0)
+                            <p class="lead text-center py-5" style="background-color:#d0ede470">No Category found!!!!</p>
+                        @else
                         <table class="table table-striped">
                             <thead class="thead-dark">
                                 <tr>
@@ -81,7 +90,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-
+                        @endif
                         {{ $categories->links() }}
                     </div>
                 </div>

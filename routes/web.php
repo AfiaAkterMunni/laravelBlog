@@ -85,6 +85,12 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
     Route::post('/blog/delete/{id}', [DashboardBlogController::class, 'delete'])->name('blog.delete');
 
 
+    //--------Search Functionality -------//
+
+    Route::get('/category/search', [DashboardCategoryController::class, 'search'])->name('category.search');
+
+
+
 
 });
 
