@@ -10,6 +10,7 @@ use App\Http\Controllers\Dashboard\BlogController as DashboardBlogController;
 use App\Http\Controllers\Dashboard\CategoryController as DashboardCategoryController;
 use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\ReplyController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SubscribeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -42,6 +43,10 @@ Route::post('/contact/store', [ContactController::class, 'store'])->name('contac
 Route::post('/comment/store', [CommentController::class, 'store'])->name('comment.store');
 Route::post('/subscribe', [SubscribeController::class, 'store'])->name('subscribe.store');
 Route::post('/reply', [ReplyController::class, 'store'])->name('reply.store');
+
+
+// Frontend Search
+Route::get('/search', [SearchController::class, 'search'])->name('search');
 
 Route::prefix('dashboard')->middleware('auth')->group(function(){
 
@@ -87,12 +92,15 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
 
     //--------Search Functionality -------//
 
+    //Backend Search
     Route::get('/category/search', [DashboardCategoryController::class, 'search'])->name('category.search');
-
-
+    Route::get('/blogs/search', [DashboardBlogController::class, 'search'])->name('blog.search');
 
 
 });
+
+
+
 
 
 

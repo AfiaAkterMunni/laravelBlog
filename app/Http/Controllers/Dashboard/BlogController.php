@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Dasboard\SearchBlogRequest;
 use App\Http\Requests\Dasboard\StoreBlogRequest;
 use App\Http\Requests\Dasboard\UpdateBlogRequest;
 use App\Models\Blog;
@@ -97,6 +98,15 @@ class BlogController extends Controller
         }
         Blog::where('id', $id)->delete();
         return redirect(url()->previous())->with('blogDelete', 'Blog Deleted successfully!');
+    }
+
+    public function search(SearchBlogRequest $request)
+    {
+        // dd($request->search);
+        $blogs = Blog::where('title', 'LIKE', "%$request->search%")->paginate(5);
+        return view('dashboard.pages.blogs.index', [
+            'blogs' => $blogs
+        ]);
     }
 
 

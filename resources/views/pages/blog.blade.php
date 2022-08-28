@@ -68,16 +68,11 @@
 
                         <div class="s-content__pagenav">
                             <div class="prev-nav">
-                                <a href="#" rel="prev">
-                                    <span>Previous</span>
-                                    Tips on Minimalist Design
-                                </a>
-                            </div>
-                            <div class="next-nav">
-                                <a href="#" rel="next">
-                                    <span>Next</span>
-                                    A Practical Guide to a Minimalist Lifestyle.
-                                </a>
+                                <span>Latest Blog of Name</span>
+                                @foreach ($userBlogs as $userBlog)
+                                    <a href="{{ route('blog',['id'=>$userBlog->id])}}">{{$userBlog->title}}</a>
+                                    <hr style="margin: 5px auto; border: 1px solid rgb(159, 173, 214)">
+                                @endforeach
                             </div>
                         </div> <!-- end s-content__pagenav -->
 

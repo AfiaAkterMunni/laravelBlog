@@ -58,10 +58,14 @@
             <div class="s-header__search-inner">
                 <div class="row wide">
 
-                    <form role="search" method="get" class="s-header__search-form" action="#">
+                    <form role="search" method="GET" class="s-header__search-form" action="{{route('search')}}">
+                        @csrf
                         <label>
                             <span class="h-screen-reader-text">Search for:</span>
-                            <input type="search" class="s-header__search-field" placeholder="Search for..." value="" name="s" title="Search for:" autocomplete="off">
+                            <input type="search" class="s-header__search-field" placeholder="Search for..." value="" name="search" title="Search for:" autocomplete="off">
+                            @error('search')
+                            <p style="color: white">{{ $message }}</p>
+                            @enderror
                         </label>
                         <input type="submit" class="s-header__search-submit" value="Search">
                     </form>
