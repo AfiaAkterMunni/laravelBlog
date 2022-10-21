@@ -40,5 +40,3 @@ php artisan serve
 ```
 You can now access the server at http://localhost:8000
 
-## Admin Credentials
-You can now access dashboard at http://localhost:8000/login or click profile
