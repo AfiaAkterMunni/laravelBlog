@@ -3,6 +3,7 @@
 **Laravel Blog** is a practice project for learning laravel framework. Here I used **_laravel/ui package_** for authentication. This project is focused on CRUD system of Categories and Blogs. Blog has image uploading feature and one to many relationship with category. Here I also implemented blog view count.
 
 <br>
+
 ## Installation
 
 Please follow the below instruction to run the project.
